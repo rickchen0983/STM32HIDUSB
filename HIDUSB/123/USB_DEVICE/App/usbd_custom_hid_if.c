@@ -210,7 +210,7 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t* state)
   //UNUSED(state);
   memcpy(buffer,state,0x40);
 	USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS,buffer,0x40);
-	if(*buffer == '\1')
+	if((buffer[1]&0x0F) == 0x35)
   {
 		HAL_GPIO_WritePin(LD5_GPIO_Port,LD5_Pin,GPIO_PIN_SET);
 	}
